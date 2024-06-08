@@ -6,7 +6,7 @@ settings.log.stdout.set(true) # Log to stdout
 settings.log.level.set(3) # Set log level: 3 is "info"
 settings.log.file.set(true) # Enable logging to a file
 settings.log.file.perms.set(384) # File permissions for the log file
-settings.log.file.path.set("/home/spcast/SPCast/syndication/logs/syndication.log") # Path to the log file
+settings.log.file.path.set("/home/spcast/SPCast/syndication/logs/syndication_spChangeToSyndicationID.log") # Path to the log file
 settings.log.file.append.set(true) # Append to the log file (instead of overwriting)
 
 # Daemon Configuration
@@ -34,6 +34,11 @@ settings.frame.audio.channels.set(2) # Set the number of audio channels for the 
 
 # Metadata Configuration for Encoders
 settings.encoder.metadata.export.set(["artist", "title", "album", "genre", "date", "tracknumber", "comment", "track", "year", "dj", "next", "apic", "metadata_block_picture", "coverart"])
+
+# Syndication Details
+# remote source to be transcoded
+url = "spChangeToSyndicationURL"
+syndication = mksafe(input.http(url,user_agent="SPCast.eu / Content Syndication - spChangeToRadioName"))
 
 # Include Data
 %include "syndication_modus.liq"
