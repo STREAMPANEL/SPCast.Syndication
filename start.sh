@@ -16,7 +16,7 @@ done
 pkill -f bdgovcptegpxtv
 
 # Remove log files
-rm -f /home/spcast/SPCast/syndication/logs/*.log*
+find /home/spcast/SPCast/syndication/logs/ -name "*.log*" -type f -mtime +3 -exec rm -f {} \;
 
 # Set permissions
 chmod +x spcast_syndication.liq
