@@ -36,9 +36,11 @@ settings.frame.audio.channels.set(2) # Set the number of audio channels for the 
 settings.encoder.metadata.export.set(["artist", "title", "album", "genre", "date", "tracknumber", "comment", "track", "year", "dj", "next", "apic", "metadata_block_picture", "coverart"])
 
 # Syndication Details
-# remote source to be transcoded
-url = "spChangeToSyndicationURL"
-syndication = mksafe(input.http(url,user_agent="SPCast.eu / Content Syndication - spChangeToRadioName"))
+# Define remote source URL
+remoteUrl = "spChangeToSyndicationURL"
+
+# Fetch the remote stream with a custom user agent
+syndication = buffer(mksafe(input.http(remoteUrl, user_agent="SPCast.eu / Content Syndication - spChangeToRadioName")))
 
 # Include Data
 %include "syndication_modus.liq"
